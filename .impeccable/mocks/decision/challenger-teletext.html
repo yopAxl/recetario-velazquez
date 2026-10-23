@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Recetario Velázquez — Teletext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1440px; height: 900px; overflow: hidden;
+    background: #0000c0;
+    font-family: 'IBM Plex Mono', monospace;
+    color: #ffffff;
+    display: flex; flex-direction: column;
+  }
+  .teletext-header {
+    background: #0000c0;
+    padding: 20px 40px 0;
+    border-bottom: 4px solid #ffff00;
+    flex-shrink: 0;
+  }
+  .t-top {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 12px;
+  }
+  .t-brand { font-size: 28px; font-weight: 700; color: #ffff00; letter-spacing: 0.04em; }
+  .t-brand span { color: #ffffff; }
+  .t-nav { display: flex; gap: 0; }
+  .t-nav a {
+    display: block; padding: 6px 18px;
+    background: #000080; color: #ffff00;
+    font-size: 13px; font-weight: 700;
+    text-decoration: none;
+    margin-left: 2px;
+  }
+  .t-nav a.active { background: #ffff00; color: #0000c0; }
+  .t-index {
+    display: flex; gap: 24px;
+    padding: 6px 0;
+    font-size: 11px; color: #00c000;
+  }
+  /* Body */
+  .t-body {
+    flex: 1; display: grid;
+    grid-template-columns: 420px 1fr;
+    overflow: hidden;
+  }
+  .t-sidebar {
+    background: #000080;
+    border-right: 4px solid #ffff00;
+    padding: 24px;
+    overflow: hidden;
+  }
+  .t-sidebar .page-label {
+    font-size: 11px; color: #00c000;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .t-row {
+    display: flex; align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,0,0.2);
+    gap: 16px;
+    cursor: pointer;
+  }
+  .t-row.sel { background: rgba(255,255,0,0.1); margin: 0 -24px; padding: 12px 24px; }
+  .t-row-num { font-size: 20px; font-weight: 700; color: #ffff00; min-width: 28px; }
+  .t-row-info h3 { font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 3px; }
+  .t-row-info .origin { font-size: 11px; color: #00c000; text-transform: uppercase; letter-spacing: 0.06em; }
+  .t-row-meta { margin-left: auto; font-size: 11px; color: #ffff00; text-align: right; }
+  /* Detail */
+  .t-detail {
+    padding: 28px 40px;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .t-detail .page-num { font-size: 11px; color: #00c000; margin-bottom: 16px; letter-spacing: 0.1em; }
+  .t-detail h2 { font-size: 36px; font-weight: 700; color: #ffff00; line-height: 1.1; margin-bottom: 6px; }
+  .t-detail .sub { font-size: 14px; color: #00c000; margin-bottom: 20px; }
+  .t-detail hr { border: none; border-top: 2px solid #ffff00; margin-bottom: 20px; }
+  .t-chips { display: flex; gap: 10px; margin-bottom: 20px; }
+  .t-chip {
+    padding: 4px 12px; background: #000080; border: 2px solid #ffff00;
+    font-size: 11px; font-weight: 700; color: #ffff00;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .t-ingredients { margin-bottom: 20px; }
+  .t-ingredients .label { font-size: 11px; color: #00c000; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .t-ing-row {
+    display: flex; justify-content: space-between;
+    font-size: 13px; color: #ffffff;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,192,0,0.3);
+  }
+  .t-ing-row .qty { color: #ffff00; font-weight: 700; }
+  .t-cta {
+    margin-top: auto;
+    display: inline-block;
+    padding: 12px 28px;
+    background: #ffff00; color: #0000c0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    text-decoration: none;
+    width: fit-content;
+  }
+</style>
+</head>
+<body>
+<div class="teletext-header">
+  <div class="t-top">
+    <div class="t-brand">RECETARIO <span>VELÁZQUEZ</span></div>
+    <nav class="t-nav">
+      <a href="#" class="active">P100 RECETAS</a>
+      <a href="#">P200 INGREDIENTES</a>
+      <a href="#">P300 ACERCA</a>
+    </nav>
+  </div>
+  <div class="t-index">
+    <span>NAYARIT · MÉXICO</span>
+    <span>2 RECETAS EN COLECCIÓN</span>
+    <span>COCINA REGIONAL</span>
+  </div>
+</div>
+<div class="t-body">
+  <div class="t-sidebar">
+    <div class="page-label">Índice de recetas · P100</div>
+    <div class="t-row sel">
+      <div class="t-row-num">P101</div>
+      <div class="t-row-info">
+        <h3>Enchiladas Suizas</h3>
+        <div class="origin">Platillo principal</div>
+      </div>
+      <div class="t-row-meta">45 min<br>4 porciones</div>
+    </div>
+    <div class="t-row">
+      <div class="t-row-num">P102</div>
+      <div class="t-row-info">
+        <h3>Chilayo Nayarita</h3>
+        <div class="origin">Estofado de costa</div>
+      </div>
+      <div class="t-row-meta">90 min<br>6 porciones</div>
+    </div>
+  </div>
+  <div class="t-detail">
+    <div class="page-num">PÁGINA P101 · ENCHILADAS SUIZAS</div>
+    <h2>Enchiladas<br>Suizas</h2>
+    <div class="sub">Tortillas bañadas en salsa verde con crema y queso</div>
+    <hr>
+    <div class="t-chips">
+      <div class="t-chip">45 min</div>
+      <div class="t-chip">4 porciones</div>
+      <div class="t-chip">Media</div>
+    </div>
+    <div class="t-ingredients">
+      <div class="label">Ingredientes</div>
+      <div class="t-ing-row">Tortillas de maíz <span class="qty">12 pz</span></div>
+      <div class="t-ing-row">Tomatillos <span class="qty">500 g</span></div>
+      <div class="t-ing-row">Crema ácida <span class="qty">200 ml</span></div>
+      <div class="t-ing-row">Queso Oaxaca <span class="qty">200 g</span></div>
+      <div class="t-ing-row">Pollo deshebrado <span class="qty">300 g</span></div>
+    </div>
+    <a class="t-cta" href="#">Ver receta completa &gt;&gt;</a>
+  </div>
+</div>
+</body>
+</html>

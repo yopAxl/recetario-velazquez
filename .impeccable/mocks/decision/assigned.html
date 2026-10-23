@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Recetario Velázquez — Sketch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1440px; height: 900px; overflow: hidden;
+    background: #f5f0e8;
+    font-family: 'Source Sans 3', sans-serif;
+    color: #1a1208;
+    display: flex;
+  }
+  /* Left nav rail */
+  nav {
+    width: 220px; min-width: 220px;
+    background: #1a1208;
+    color: #f5f0e8;
+    display: flex; flex-direction: column;
+    padding: 32px 0;
+    border-right: 1px solid #2e2010;
+  }
+  nav .logotype {
+    padding: 0 28px 36px;
+    border-bottom: 1px solid #3a2a10;
+  }
+  nav .logotype .wordmark {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #d4a94a;
+    margin-bottom: 4px;
+  }
+  nav .logotype .subtitle {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #f5f0e8;
+    line-height: 1.2;
+  }
+  nav ul {
+    list-style: none;
+    padding: 24px 0;
+    flex: 1;
+  }
+  nav ul li a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 28px;
+    color: #b8a88a;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+  }
+  nav ul li a.active {
+    color: #f5f0e8;
+    border-left-color: #d4a94a;
+    background: rgba(212,169,74,0.08);
+  }
+  nav .edition-label {
+    padding: 20px 28px 0;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #5a4830;
+  }
+  /* Main content */
+  main {
+    flex: 1;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 64px 1fr;
+  }
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    border-bottom: 1px solid #d4c8a8;
+    background: #f5f0e8;
+  }
+  header h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    color: #1a1208;
+  }
+  header .meta {
+    font-size: 12px;
+    color: #8a7050;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  /* Recipe grid */
+  .recipe-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  .recipe-card {
+    padding: 48px;
+    border-right: 1px solid #d4c8a8;
+    display: flex; flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .recipe-card:last-child { border-right: none; }
+  .recipe-card .num {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: #d4a94a;
+    opacity: 0.18;
+    position: absolute;
+    top: 20px; right: 32px;
+    line-height: 1;
+  }
+  .recipe-card .tag {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8a7050;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .recipe-card h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #1a1208;
+    margin-bottom: 8px;
+  }
+  .recipe-card .sub {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #6a5030;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d4c8a8;
+  }
+  .recipe-card .meta-row {
+    display: flex; gap: 32px;
+    margin-bottom: 28px;
+  }
+  .recipe-card .meta-item .label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8a7050;
+    margin-bottom: 2px;
+    font-weight: 600;
+  }
+  .recipe-card .meta-item .value {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1208;
+  }
+  .recipe-card .section-title {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8a7050;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .recipe-card ul.ingredients {
+    list-style: none;
+    margin-bottom: 24px;
+  }
+  .recipe-card ul.ingredients li {
+    font-size: 14px;
+    color: #2e2010;
+    padding: 5px 0;
+    border-bottom: 1px solid #e8e0cc;
+    display: flex; justify-content: space-between;
+    line-height: 1.4;
+  }
+  .recipe-card ul.ingredients li .qty {
+    color: #8a7050;
+    font-style: italic;
+    font-size: 13px;
+  }
+  .recipe-card .img-placeholder {
+    margin-top: auto;
+    height: 160px;
+    background: #d4c8a8;
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #8a7050;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="logotype">
+    <div class="wordmark">Recetario</div>
+    <div class="subtitle">Velázquez</div>
+  </div>
+  <ul>
+    <li><a href="#" class="active">Recetas</a></li>
+    <li><a href="#">Ingredientes</a></li>
+    <li><a href="#">Acerca de</a></li>
+  </ul>
+  <div class="edition-label">Nayarit · México</div>
+</nav>
+<main>
+  <header>
+    <h1>Dos recetas de la cocina nayarita</h1>
+    <span class="meta">Colección · 2 recetas</span>
+  </header>
+  <div class="recipe-area">
+    <div class="recipe-card">
+      <span class="num">1</span>
+      <div class="tag">Platillo principal · Nayarit</div>
+      <h2>Enchiladas Suizas</h2>
+      <div class="sub">Tortillas bañadas en salsa verde con crema y queso derretido</div>
+      <div class="meta-row">
+        <div class="meta-item">
+          <div class="label">Tiempo</div>
+          <div class="value">45 min</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Porciones</div>
+          <div class="value">4</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Dificultad</div>
+          <div class="value">Media</div>
+        </div>
+      </div>
+      <div class="section-title">Ingredientes principales</div>
+      <ul class="ingredients">
+        <li>Tortillas de maíz <span class="qty">12 piezas</span></li>
+        <li>Tomates verdes (tomatillos) <span class="qty">500 g</span></li>
+        <li>Crema ácida <span class="qty">200 ml</span></li>
+        <li>Queso Oaxaca rallado <span class="qty">200 g</span></li>
+        <li>Pollo cocido y deshebrado <span class="qty">300 g</span></li>
+      </ul>
+      <div class="img-placeholder">Fotografía del platillo</div>
+    </div>
+    <div class="recipe-card">
+      <span class="num">2</span>
+      <div class="tag">Estofado · Nayarit</div>
+      <h2>Chilayo Nayarita</h2>
+      <div class="sub">Guisado de cerdo con chile ancho en salsa espesa estilo costa</div>
+      <div class="meta-row">
+        <div class="meta-item">
+          <div class="label">Tiempo</div>
+          <div class="value">90 min</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Porciones</div>
+          <div class="value">6</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Dificultad</div>
+          <div class="value">Alta</div>
+        </div>
+      </div>
+      <div class="section-title">Ingredientes principales</div>
+      <ul class="ingredients">
+        <li>Espinazo de cerdo <span class="qty">1 kg</span></li>
+        <li>Chile ancho seco <span class="qty">6 piezas</span></li>
+        <li>Chile mulato <span class="qty">3 piezas</span></li>
+        <li>Ajo y cebolla <span class="qty">al gusto</span></li>
+        <li>Comino, orégano <span class="qty">al gusto</span></li>
+      </ul>
+      <div class="img-placeholder">Fotografía del platillo</div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
